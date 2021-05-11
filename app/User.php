@@ -141,7 +141,7 @@ class User extends Authenticatable
      */
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'user_favorite', 'user_id', 'microposts_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_favorite', 'user_id', 'favorites_id')->withTimestamps();
     }
 
     /**
@@ -149,7 +149,7 @@ class User extends Authenticatable
      */
     public function favorite_users()
     {
-        return $this->belongsToMany(User::class, 'user_favorite', 'microposts_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_favorite', 'favorites_id', 'user_id')->withTimestamps();
     }
     
     
