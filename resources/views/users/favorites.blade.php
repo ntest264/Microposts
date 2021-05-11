@@ -15,4 +15,4 @@
     </div>
 @endsection
 
-//実験的に張っただけ↑Followingのをコピペしただけ
+{{--実験的に張っただけ↑Followingのをコピペしただけ--}}

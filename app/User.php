@@ -217,7 +217,7 @@ class User extends Authenticatable
      */
     public function loadRelationshipCounts()
     {
-        $this->loadCount(['microposts', 'followings', 'followers', 'favorites']);
+        $this->loadCount(['microposts', 'followings', 'followers']);//, 'favorites']);
     }
     
     
