@@ -27,10 +27,11 @@
                     </a>
                 </li>
                 {{-- フォロー一覧タブ --}}
-                <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
+                <li class="nav-item"><a href="{{ route('users.followings', ['id' => $user->id]) }}" class="nav-link">Followings</a></li>
+                {{--フォロワー一覧タブ--}}
+                <li class="nav-item"><a href="{{ route('users.followers', ['id' => $user->id]) }}" class="nav-link">Followers</a></li>
                 {{-- お気に入り一覧タブ --}}
-                <li class="nav-item"><a href="#" class="nav-link">Favorites</a></li>
+                <li class="nav-item"><a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link">Favorites</a></li>
             </ul>
             @if (Auth::id() == $user->id)
                 {{-- 投稿フォーム --}}
