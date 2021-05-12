@@ -15,7 +15,7 @@
             {{-- フォロー／アンフォローボタン --}}
             @include('user_follow.follow_button')
             {{-- お気に入り追加／非追加ボタン --}}
-            @include('user_favorite.favorite_button')
+       {{--     @include('user_favorite.favorite_button')--}}
         </aside>
            <div class="col-sm-8">
             <ul class="nav nav-tabs nav-justified mb-3">
@@ -28,7 +28,6 @@
                 </li>
                 {{-- フォロー一覧タブ --}}
                 <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
-                {{-- フォロワー一覧タブ --}}
                 <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
                 {{-- お気に入り一覧タブ --}}
                 <li class="nav-item"><a href="#" class="nav-link">Favorites</a></li>
