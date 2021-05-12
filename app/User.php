@@ -141,7 +141,7 @@ class User extends Authenticatable
      */
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'user_favorite', 'user_id', 'favorites_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_favorite', 'user_id', 'micropost_id')->withTimestamps();
     }
 
     /**
@@ -149,7 +149,7 @@ class User extends Authenticatable
      */
     public function favorite_users()
     {
-        return $this->belongsToMany(User::class, 'user_favorite', 'favorites_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'user_favorite', 'micropost_id', 'user_id')->withTimestamps();
     }
     
     
@@ -208,7 +208,7 @@ class User extends Authenticatable
     public function is_favoriting($userId)
     {
         // お気に入り追加中の   Micropostsの中に $userIdのものが存在するか
-        return $this->favorites()->where('favorite_id', $userId)->exists();
+        return $this->favorites()->where('micropost_id', $userId)->exists();
     }
     
     
