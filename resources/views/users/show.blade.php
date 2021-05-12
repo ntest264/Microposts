@@ -3,36 +3,12 @@
 @section('content')
     <div class="row">
         <aside class="col-sm-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">{{ $user->name }}</h3>
-                </div>
-                <div class="card-body">
-                    {{-- ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
-                    <img class="rounded img-fluid" src="{{ Gravatar::get($user->email, ['size' => 500]) }}" alt="">
-                </div>
-            </div>
-            {{-- フォロー／アンフォローボタン --}}
-            @include('user_follow.follow_button')
-            {{-- お気に入り追加／非追加ボタン --}}
-       {{--     @include('user_favorite.favorite_button')--}}
+            {{-- ユーザ情報 --}}
+            @include('users.card')
         </aside>
-           <div class="col-sm-8">
-            <ul class="nav nav-tabs nav-justified mb-3">
-                {{-- ユーザ詳細タブ --}}
-                <li class="nav-item">
-                    <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
-                        TimeLine
-                        <span class="badge badge-secondary">{{ $user->microposts_count }}</span>
-                    </a>
-                </li>
-                {{-- フォロー一覧タブ --}}
-                <li class="nav-item"><a href="{{ route('users.followings', ['id' => $user->id]) }}" class="nav-link">Followings</a></li>
-                {{--フォロワー一覧タブ--}}
-                <li class="nav-item"><a href="{{ route('users.followers', ['id' => $user->id]) }}" class="nav-link">Followers</a></li>
-                {{-- お気に入り一覧タブ --}}
-                <li class="nav-item"><a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link">Favorites</a></li>
-            </ul>
+        <div class="col-sm-8">
+            {{-- タブ --}}
+            @include('users.navtabs')
             @if (Auth::id() == $user->id)
                 {{-- 投稿フォーム --}}
                 @include('microposts.form')
@@ -40,6 +16,5 @@
             {{-- 投稿一覧 --}}
             @include('microposts.microposts')
         </div>
-        
     </div>
 @endsection
