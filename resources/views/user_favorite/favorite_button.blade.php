@@ -7,7 +7,7 @@
     @else
         {{-- お気に入り追加ボタンのフォーム --}}
         {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
-            {!! Form::submit('Favorite', ['class' => "btn btn-primary btn-block"]) !!}
+            {!! Form::submit('Favorite', ['class' => "btn btn-success btn-block"]) !!}
         {!! Form::close() !!}
     @endif
 @endif
