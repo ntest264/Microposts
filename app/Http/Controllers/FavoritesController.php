@@ -14,6 +14,9 @@ class FavoritesController extends Controller
      */
     public function store($id)
     {
+        // idの値で投稿を検索して取得
+        $micropost = \App\Micropost::findOrFail($id);
+        
         // 認証済みユーザ（閲覧者）が、 idのMicropostsをお気に入り追加する。
         \Auth::user()->favorite($id);
         // 前のURLへリダイレクトさせる
@@ -28,6 +31,9 @@ class FavoritesController extends Controller
      */
     public function destroy($id)
     {
+        // idの値で投稿を検索して取得
+        $micropost = \App\Micropost::findOrFail($id);
+        
         // 認証済みユーザ（閲覧者）が、 idのMicropostsを未追加する
         \Auth::user()->unfavorite($id);
         // 前のURLへリダイレクトさせる
