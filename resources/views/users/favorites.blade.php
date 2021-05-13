@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@extends('layouts.app')
+
 @section('content')
     <div class="row">
         <aside class="col-sm-4">
@@ -9,10 +11,9 @@
         <div class="col-sm-8">
             {{-- タブ --}}
             @include('users.navtabs')
-            {{-- ユーザー一覧 --}}
-            @include('users.users')
+            {{-- 投稿ー一覧 --}}
+            @include('microposts.microposts')
         </div>
     </div>
 @endsection
 
-{{--実験的に張っただけ↑Followingのをコピペしただけ--}}
