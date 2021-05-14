@@ -214,7 +214,7 @@ class User extends Authenticatable
     public function is_favoriting($micropostId)
     {
         // お気に入り追加中の   Micropostsの中に $userIdのものが存在するか
-        return $this->favorites()->where('micropost_id', $userId)->exists();
+        return $this->favorites()->where('micropost_id', $micropostId)->exists();
     }
     
     
