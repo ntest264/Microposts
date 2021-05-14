@@ -131,6 +131,12 @@ class User extends Authenticatable
         $userIds[] = $this->id;
         // それらのユーザが所有する投稿に絞り込む
         return Micropost::whereIn('user_id', $userIds);
+         // このユーザがお気に入り中のお気に入りのidを取得して配列にする
+     //   $micropostIds = $this->favorite()->pluck('microposts.id')->toArray();
+        // このお気に入り投稿のidもその配列に追加
+     //   $micropostIds[] = $this->id;
+        // それらのユーザが所有する投稿に絞り込む
+     //   return Micropost::whereIn('user_id', $userIds);
     }
     
 
@@ -159,19 +165,19 @@ class User extends Authenticatable
      * @param  int  $userId
      * @return bool
      */
-    public function favorite($userId)
+    public function favorite($micropostId)
     {
         // すでにお気に入り追加しているかの確認
-        $exist = $this->is_favoriting($userId);
+        $exist = $this->is_favoriting($micropostId);
         // 対象が自分自身かどうかの確認
-        $its_me = $this->id == $userId;
+        $its_me = $this->id == $micropostId;
 
         if ($exist || $its_me) {
             // すでにお気に入り追加していれば何もしない
             return false;
         } else {
             // 未追加であれば追加する
-            $this->favorites()->attach($userId);
+            $this->favorites()->attach($micropostId);
             return true;
         }
     }
@@ -182,16 +188,16 @@ class User extends Authenticatable
      * @param  int  $userId
      * @return bool
      */
-    public function unfavorite($userId)
+    public function unfavorite($micropostId)
     {
         // すでにお気に入り追加しているかの確認
-        $exist = $this->is_favoriting($userId);
+        $exist = $this->is_favoriting($micropostId);
         // 対象が自分自身かどうかの確認
-        $its_me = $this->id == $userId;
+        $its_me = $this->id == $micropostId;
 
         if ($exist && !$its_me) {
             // すでにお気に入り追加していればお気に入り追加を外す
-            $this->favorites()->detach($userId);
+            $this->favorites()->detach($micropostId);
             return true;
         } else {
             // 未追加であれば何もしない
@@ -205,7 +211,7 @@ class User extends Authenticatable
      * @param  int  $userId
      * @return bool
      */
-    public function is_favoriting($userId)
+    public function is_favoriting($micropostId)
     {
         // お気に入り追加中の   Micropostsの中に $userIdのものが存在するか
         return $this->favorites()->where('micropost_id', $userId)->exists();
