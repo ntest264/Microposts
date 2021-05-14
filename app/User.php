@@ -160,7 +160,7 @@ class User extends Authenticatable
     
     
     /**
-     * $userIdで指定されたMicropostsをお気に入り追加する。
+     * $micropostIdで指定されたMicropostsをお気に入り追加する。
      *
      * @param  int  $userId
      * @return bool
@@ -213,7 +213,7 @@ class User extends Authenticatable
      */
     public function is_favoriting($micropostId)
     {
-        // お気に入り追加中の   Micropostsの中に $userIdのものが存在するか
+        // お気に入り追加中の   Micropostsの中に $micropostIdのものが存在するか
         return $this->favorites()->where('micropost_id', $micropostId)->exists();
     }
     

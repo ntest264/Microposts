@@ -11,6 +11,8 @@
             @include('users.navtabs')
             {{-- ユーザ一覧 --}}
             @include('users.users')
+            {{--お気に入りボタン--}}
+            @include('user_favorite.favorite_button')
         </div>
     </div>
 @endsection
