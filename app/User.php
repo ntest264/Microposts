@@ -170,9 +170,10 @@ class User extends Authenticatable
         // すでにお気に入り追加しているかの確認
         $exist = $this->is_favoriting($micropostId);
         // 対象が自分自身かどうかの確認
-        $its_me = $this->id == $micropostId;
+        //$its_me = $this->id == $micropostId;
 
-        if ($exist || $its_me) {
+        //if ($exist || $its_me) {
+        if ($exist){
             // すでにお気に入り追加していれば何もしない
             return false;
         } else {
@@ -193,15 +194,17 @@ class User extends Authenticatable
         // すでにお気に入り追加しているかの確認
         $exist = $this->is_favoriting($micropostId);
         // 対象が自分自身かどうかの確認
-        $its_me = $this->id == $micropostId;
+      //  $its_me = $this->id == $micropostId;
 
-        if ($exist && !$its_me) {
-            // すでにお気に入り追加していればお気に入り追加を外す
-            $this->favorites()->detach($micropostId);
+     //   if ($exist && !$its_me) {
+            // お気に入りされていたら、お気に入りから外す
+        if ($exist){
+           $this->favorites()->detach($micropostId);
             return true;
-        } else {
-            // 未追加であれば何もしない
-            return false;
+        } 
+        else {
+            // すでにお気に入りからはずしていれば何もしない
+             return false;
         }
     }
     
