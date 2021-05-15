@@ -143,20 +143,20 @@ class User extends Authenticatable
     
     
     /**
-     * このユーザが追加したお気に入り。（ Userモデルとの関係を定義）
+     * このユーザが追加したお気に入り。（ Micropostモデルとの関係を定義）
      */
     public function favorites()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'user_id', 'micropost_id')->withTimestamps();
+        return $this->belongsToMany(Micropost::class, 'favorites', 'user_id', 'micropost_id')->withTimestamps();
     }
 
     /**
      * このMicropostsをお気に入り追加中のユーザ。（ Userモデルとの関係を定義）
      */
-    public function favorite_users()
-    {
-        return $this->belongsToMany(User::class, 'favorites', 'micropost_id', 'user_id')->withTimestamps();
-    }
+    //public function favorite_users()
+    //{
+    //    return $this->belongsToMany(User::class, 'favorites', 'micropost_id', 'user_id')->withTimestamps();
+    //}
     
     
     /**
