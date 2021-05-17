@@ -131,12 +131,6 @@ class User extends Authenticatable
         $userIds[] = $this->id;
         // それらのユーザが所有する投稿に絞り込む
         return Micropost::whereIn('user_id', $userIds);
-         // このユーザがお気に入り中のお気に入りのidを取得して配列にする
-     //   $micropostIds = $this->favorite()->pluck('microposts.id')->toArray();
-        // このお気に入り投稿のidもその配列に追加
-     //   $micropostIds[] = $this->id;
-        // それらのユーザが所有する投稿に絞り込む
-     //   return Micropost::whereIn('user_id', $userIds);
     }
     
 
